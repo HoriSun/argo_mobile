@@ -1,0 +1,62 @@
+姓名： 黄镇杰
+年级： 2012
+暑假修炼目标（结合自身的职业发展规划）： 学会使用和修改一套移动前端框架
+修炼宣言（给自己一点信心！）： 不做愚蠢的人类
+
+
+时间表：
+    自 7 月  1 日 到 7 月 21 日，完成 javascript补习，使用框架给argo_m加壳
+    自 7 月 22 日 到 8 月  4 日，完成 jsbbs文档，javascript和css的高效使用，熟练使用nodejs，接触nosql数据库(redis)
+    自 8 月  4 日 到 8 月 25 日，完成 大致理解firebird BBS代码架构，学会java，初步接触安卓客户端开发。
+
+
+自评方法：
+    在 7 月 21 日的时候，我将可以 理解argo前端接口，学会一套移动web框架，熟练使用javascript一些特性（闭包/原型链/作用域/继承）并应用于argo_m
+    在 8 月  4 日的时候，我将可以 有能力修补jsbbs并为之加速。添加同步数据库用于用户消息提醒。
+    在 8 月 25 日的时候，我将可以 理解telnet架构   
+
+
+参考资料：
+    高流量网站CSS
+    javascript动物书 (O'Reilly)
+    node入门
+    腾讯前端团队 AlloyTeam
+    阿里ued (aliued)
+    webQQ/qzone触屏版开发分享资料
+    UED club 资料
+    TLPI (The Linux Programming Interface)
+    算法导论
+    SICP (Structure and Interpretation of Computer Program)
+
+
+并行任务：
+    Intel MSDK 视频流转码
+    数字图像处理
+    数据库复习&冯剑琳project
+    操作系统复习&Unix/Linux内核/网络编程实战
+    算法学习、实现和OJ
+
+
+相关技术背景：
+    前端基础，html/css/js均会皮毛，会写界面和简单编程，非jQuery的ajax
+    python, tornado, MySQL基础, 数据库薄弱
+    
+
+中长期目标：
+    熟悉linux服务器编程，做出功能完善、界面优雅、响应速度快、兼容性好的个人博客并部署在SAE/BAE
+    总结出前端开发一些规律和经验, 熟悉关系型和非关系型数据库的使用和各自优劣、应用范畴。
+    能给服务器端做代码优化，包括代码标准化、文档完善、性能优化。
+    
+
+提议：
+    To do list 列入wiki内容，分轻重缓急，在github上？或在SAE/BAE上做一个简单应用共享
+    将所有管理接口一步步转移到web和数据库上来，降低站务学习难度。
+    组织定期集体学习，和个人学习内容并行，每三天报告一次(关键词即可)，参见厚朴工作室。
+    每解决一个问题，当周讨论要有人负责总结。注重分享和交流。
+    做代码标准(统一风格)、注重文档和注释的完善。
+        
+    
+    
+    
+
+
