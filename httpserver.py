@@ -4,7 +4,6 @@
 import socket
 import thread
 import time
-import re
 
 HOST = '192.168.150.23'
 PORT = 8000
