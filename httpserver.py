@@ -7,6 +7,7 @@ import time
 import re
 import traceback
 
+
 HOST = '192.168.150.23'
 HOST = ''
 PORT = 8000
@@ -83,7 +84,7 @@ def serve(client, addr):
         if temp:
             ret = temp
         else:
-            ret = route("/text/404.html")
+            ret = route("/html/404.html")
 
     ret = header('html') + ret   
 
