@@ -5,8 +5,10 @@ import socket
 import thread
 import time
 import re
+import traceback
 
 HOST = '192.168.150.23'
+HOST = ''
 PORT = 8000
 content = {}
 
@@ -30,24 +32,45 @@ def importer(filename, key):
     file.close()
 
 
-def tracer(src):
-    src = filter(lambda x:x, src.split('/'))
-    con = content
-    print src
-    for num,item in enumerate(src):
-        try:
-            con = con[item]
-        except KeyError:
-            return content["text"]["404.html"]
-    if type(con) != str:
-        return content["text"]["404.html"]
-    return con
 
+def htmlreader(filename):
+    file = open(filename, 'rb')
+    cont = file.read()
+    file.close()
+    return cont
+
+static_path = './static/'
+
+def staticreader(filename):
+    file = open(static_path+filename, 'rb')
+    cont = file.read()
+    file.close()
+    return cont
+
+
+router = [
+    (r'/html/(\w*\.\w+)',htmlreader),
+    (r'/static/((?:\w*/)*\w*\.\w+)',staticreader)
+]
+
+
+def route(src):
+    for pattern,handler in router:
+        mat = re.match(pattern,src)
+        if mat:
+            try:
+                ret = handler(*(mat.groups()))
+                return ret
+            except Exception, e:
+                print "[ ERROR ]\t",e,'\n================================'
+                print traceback.format_exc(),"\n\n"
+                return ""
+    return ""
 
 def serve(client, addr):
     thtime = time.ctime()
     print "\n\nNew thread started at",thtime
-    request = client.recv(5192)
+    request = client.recv(1024)
     method = request.split(' ')[0]
     src = request.split(' ')[1]
 
@@ -56,23 +79,22 @@ def serve(client, addr):
     print "==== Request ===\r\n" ,request
 
     if method == 'GET':
-        ret = tracer(src)  #corresponding file            
+        temp = route(src)  #corresponding file            
+        if temp:
+            ret = temp
+        else:
+            ret = route("/text/404.html")
+
+    ret = header('html') + ret   
 
     client.sendall(ret)
     client.close()
-    print "Thread of",thtime,"finished\n\n"
-
-
-filter(lambda (x,y):importer(x,y),[
-    ( "index.html"   ,   "text"  ),
-    ( "reg.html"     ,   "text"  ),
-    ( "scenary.jpg"  ,   "image" ),
-    ( "404.html"     ,   "text"  ),
-])
+    print "thread",thtime,"finished\n\n"
 
 
 
 if __name__ == "__main__":
+
     try:
         #Socket Init
         server = socket.socket( socket.AF_INET, socket.SOCK_STREAM )
@@ -81,8 +103,8 @@ if __name__ == "__main__":
         server.bind((HOST,PORT))
         server.listen(100)
         while True:
-            client, addr = server.accept()
-            thread.start_new_thread(serve, (client, addr))
+            client,addr = server.accept()
+            thread.start_new_thread(serve,(client, addr))
 
     except (KeyboardInterrupt, SystemExit):
         pass
