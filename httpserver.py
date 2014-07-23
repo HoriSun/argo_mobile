@@ -22,17 +22,6 @@ Content-Type: ''' + type + '''
 
 '''
 
-def importer(filename, key):
-    file = open(filename, 'rb')
-    head = header(key+'/'+filename.split('.')[-1]) # expanded name
-    try:
-        content[key][filename] = head + file.read()
-    except KeyError:
-        file.seek(0)
-        content[key] = {filename:(head + file.read())}
-    file.close()
-
-
 
 def htmlreader(filename):
     file = open(filename, 'rb')
